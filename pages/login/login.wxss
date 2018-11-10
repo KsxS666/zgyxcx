@@ -1,0 +1,37 @@
+/* pages/login/login.wxss */
+@import "../../common/common.wxss";
+page{
+  padding: 46rpx 40rpx 0 40rpx;
+  width: auto;
+}
+.logo-box{
+  width: 190rpx;
+  height: 190rpx;
+  margin: 0 auto;
+  margin-bottom: 136rpx
+}
+.login-title{
+  font-size: 40rpx;
+  color: #333333;
+  margin-bottom: 52rpx;
+  display: block
+}
+.input-wrp{
+  height: 100rpx;
+  border-radius: 50rpx;
+  border: 1rpx solid #dadada;
+  padding-left: 50rpx;
+  margin-bottom: 44rpx
+}
+.input-wrp input.worknum{
+  height: 100%
+}
+.login-btn{
+  height: 100rpx;
+  border-radius: 50rpx;
+  color: #ffffff;
+  font-size: 34rpx;
+  line-height: 100rpx;
+  transition: .3s
+}
+

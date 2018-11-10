@@ -1,0 +1,84 @@
+/* pages/kitchen-waste-insert/kitchen-waste-insert.wxss */
+@import "../../common/common.wxss";
+page{
+  background: #ffffff;
+}
+.house-tab .house-tab-item{
+  flex:1;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 96rpx;
+  position: relative;
+  font-weight: bold
+}
+.house-tab .house-tab-item text{
+  transition: .5s
+}
+.house-tab .house-tab-item:not(:last-child):after{
+  content: "|";
+  color: #e5e5e5;
+  position: absolute;
+  right: 0
+}
+.house-tab .house-tab-item.active text{
+  font-weight: bolder;
+  color: #24c7ae;
+  transition: .5s;
+  position: relative;
+  top: -3rpx;
+}
+.community-info{
+  padding: 0 30rpx;
+  height: 96rpx;
+  border-bottom: 1px solid #e5e5e5;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32rpx;
+  background: #ffffff
+}
+.community-name{
+  margin-right: 20rpx;
+}
+.card-wrapper{
+  margin-top: 30rpx;
+  overflow: hidden;
+}
+.card-wrapper navigator,.card-wrapper view{
+  margin-left: 30rpx;
+  margin-bottom: 30rpx;
+  float: left;
+  width:210rpx;
+  height: 210rpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  font-weight: bolder;
+  position: relative;
+  border-radius: 10rpx
+}
+.card-wrapper navigator image,.card-wrapper view image{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.card-wrapper navigator text,.card-wrapper view text{
+  z-index: 1
+}
+.flag0{
+  background: #f5f5f5;
+  color: #a6a6a6
+}
+.flag1{
+  background: #f5f5f5;
+  color: #8f8f8f;
+  border: 2px solid #a6a6a6
+}
+.flag2{
+  color: #00ac92
+}
+.flag3{
+  color: #e55235
+}

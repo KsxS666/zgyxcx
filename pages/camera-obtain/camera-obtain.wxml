@@ -1,0 +1,11 @@
+<!--pages/camera-obtain/camera-obtain.wxml-->
+<view class='camera-wrp flex'>
+  <image src='{{isImage?thumbnailUrl:"../../images/ios/相机@2x.png"}}' class='{{isImage?"":"camera-icon"}}'></image>
+</view>
+<view class='btn-area flex'>
+  <view class='cancel ripple' bindtap='backToKitchen'>取消</view>
+  <view class='chooseImage bac-color ripple' bindtap='chooseImage'>选择图片</view>
+  
+  
+</view>
+<view class="go-upload ripple" wx:if="{{isImage}}" bindtap='doUpload'>上传</view>

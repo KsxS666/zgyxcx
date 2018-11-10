@@ -1,0 +1,25 @@
+<!--pages/phonebook/phonebook.wxml-->
+<view class='gr'></view>
+<view class='shadow-card my-info'>
+  <view class='my-head-name flex'>
+    <image src='../../images/ios/我的通讯@2x.png'></image>
+    我
+  </view>
+  <view class='my-phone flex'>{{myPhone}}</view>  
+</view>
+<view class='book-member-content'>
+  <block wx:for="{{phoneBook}}">
+    <view class='book-member-item flex'>
+      <view class='section flex'>
+        <view class="{{item.identity == 1?'captain':'leaguer'}} mgr"><text></text>{{item.identity == 1?'组长':'成员'}}</view>
+        {{item.name}}<text wx:if="{{item.phone == myPhone}}">(我)</text>
+      </view>
+      <view class='section flex ripple' wx:if="{{item.phone!=myPhone}}" bindtap='callNumber' data-phone="{{item.phone}}">
+        <view>{{item.phone}}</view>
+        <view class='phone-call flex'>
+          <image src='../../images/ios/呼叫@2x.png' class='phone-icon mgr'></image>呼叫
+        </view>
+      </view> 
+    </view>
+  </block>
+</view>

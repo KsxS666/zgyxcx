@@ -1,0 +1,74 @@
+/* pages/house-manage/house-manage.wxss */
+@import "../../common/common.wxss";
+page{
+  font-weight: bold;
+  font-size: 32rpx;
+  background: #f5f5f5;
+  color: #333333
+}
+.mgr{
+  margin-right: 20rpx;
+}
+.rotate1{
+  transform:rotate(180deg);
+  transition: .5s
+}
+.rotate2{
+  transform:rotate(180deg);
+  transition: .5s
+}
+.rotate3{
+  transform:rotate(180deg);
+  transition: .5s
+}
+.commu-addr{
+  align-items: center;
+  padding: 0 45rpx
+}
+.commu-addr image{
+  width: 31rpx;
+  height: 41rpx;
+}
+.filter-bar{
+  height: 100rpx;
+  border-bottom: 1px solid #e5e5e5;
+  background: #ffffff
+}
+.filter-bar .filter-bar-item{
+  flex: 1;
+  align-items: center;
+  justify-content: center
+}
+.filter-bar .filter-bar-item picker{
+  margin-right: 12rpx
+}
+.filter-bar .filter-bar-item .arrow{
+  width: 15rpx;
+  height: 9rpx;
+  transition: .54s
+}
+.card{
+  background: #ffffff;
+  margin-bottom: 20rpx;
+}
+.card-info{
+  padding: 0 30rpx;
+  align-items: center;
+  justify-content: space-between
+}
+.card-info.card-info-1{
+  height: 100rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+.card-info.card-info-2{
+  height: 144rpx;
+}
+.go-detail{
+  width: 190rpx;
+  height: 79rpx;
+  color: #fefefe;
+  font-size: 30rpx;
+  line-height: 79rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}

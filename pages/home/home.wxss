@@ -1,0 +1,82 @@
+/* pages/home/home.wxss */
+@import "../../common/common.wxss";
+page{
+  color: #333333;
+  height: 100%
+}
+.user-info{
+  height: 8%;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0 32rpx;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32rpx;
+  margin-bottom: 21rpx;
+}
+.head-name{
+  align-items: center;
+}
+.mgr{
+  margin-right: 25rpx;
+}
+image.headImg{
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+}
+.community-name{
+  align-items: center;
+}
+.community-name image{
+  width: 31rpx;
+  height: 41rpx;
+}
+.head-title{
+  height: 58rpx;
+  width: 163rpx;
+  color: #ffffff;
+  line-height: 58rpx;
+  border-radius: 0 30rpx 30rpx 0;
+  text-align: center;
+  margin-bottom: 28rpx;
+}
+.area-manager-content{
+  flex-flow: column;
+  align-items: center;
+  height: 18%
+}
+.area-manager-item{
+  margin-bottom: 31rpx;
+}
+.grid{
+  height: 53%;
+  flex-flow: column
+}
+.grid-column-item{
+  flex: 1
+}
+.grid-row-item{
+  flex: 1;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+}
+.grid-row-item image{
+  width: 146rpx;
+  height: 146rpx;
+  margin-bottom: 27rpx
+}
+.grid-row-item text{
+  font-size: 36rpx;
+}
+swiper{
+  height: 12%;
+}
+.grid-row-item.card1{border-left: 0;border-top: 0;border-right: 0 }
+.grid-row-item.card2{border-right: 0;border-top: 0}
+.grid-row-item.card3{border-top: 0;border-left: 0;border-right: 0}
+.grid-row-item.card4{border-right: 0;border-top: 0}
+
+
+

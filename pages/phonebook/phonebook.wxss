@@ -1,0 +1,83 @@
+/* pages/phonebook/phonebook.wxss */
+@import "../../common/common.wxss";
+page{
+  font-size: 38rpx;
+  font-weight: bolder;
+  background: #f5f5f5
+}
+.my-info{
+  padding: 0 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mgr{
+  margin-right: 20rpx;
+}
+.my-head-name{
+  align-items: center
+}
+.my-head-name image{
+  width: 66rpx;
+  height: 66rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.book-member-content{
+  background: #ffffff
+}
+.book-member-content .book-member-item{
+  /* align-items: center;
+  justify-content: space-between; */
+  /* padding: 0 55rpx 0 30rpx; */
+  height: 140rpx;
+}
+.book-member-content .book-member-item .section{
+  flex: 1;
+  align-items: center
+}
+.book-member-content .book-member-item .section:nth-child(1){
+  padding-left: 30rpx;
+}
+.book-member-content .book-member-item .section:nth-child(2){
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 55rpx;
+}
+.book-member-content .book-member-item:not(:last-child){
+  border-bottom: 1px solid #e5e5e5
+}
+.captain,.leaguer,book-member-content,.book-member-item .section:nth-child(2){
+  font-size: 32rpx;
+  
+}
+.captain{
+  background: #e55235;
+  width: 96rpx;
+  height: 49rpx;
+  color: #ffffff;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 49rpx;
+  display: inline-block
+}
+.leaguer{
+  background: #ffffff;
+  color: #24c7ae;
+  border: 1px solid #24c7ae;
+  width: 96rpx;
+  height: 49rpx;
+  line-height: 49rpx;
+  display: inline-block;
+  text-align: center;
+  border-radius: 10rpx;  
+}
+.phone-icon{
+  width: 43rpx;
+  height: 43rpx;
+  border-radius: 50%;
+}
+.phone-call{
+  align-items: center
+}

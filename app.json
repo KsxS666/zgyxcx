@@ -1,0 +1,21 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/login/login",
+    "pages/house-manage/house-manage",
+    "pages/insert-record/insert-record",    
+    "pages/launch-detail/launch-detail",    
+    "pages/phonebook/phonebook",
+    "pages/kitchen-waste-insert/kitchen-waste-insert",  
+    "pages/score-insert/score-insert",
+    "pages/camera-obtain/camera-obtain",    
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

@@ -1,0 +1,34 @@
+<!--pages/launch-detail/launch-detail.wxml-->
+<view class='gr'></view>
+<view class='shadow-card location-info'>
+  <text class='location-content s-size'>{{params.doorNumber}}</text>
+  <text class='b-size'>{{params.communityName + "-"+params.address}}</text>
+</view>
+<view class='info-content'>
+  <view class='count-num-wrp flex'>
+    <view class='section flex'>
+      <view class='b-size'>{{dataArr.totalCount}}</view>
+      <view class='s-size'>投放次数</view>      
+    </view>
+    <view class='section flex'>
+      <view class='b-size'>{{dataArr.passCount}}</view>
+      <view class='s-size'>合格次数</view>      
+    </view>
+    <view class='section flex'>
+      <view class='b-size'>{{dataArr.percent}}</view>
+      <view class='s-size'>合格率</view>      
+    </view>
+    
+  </view>
+  <view class='check-res'>
+    <block wx:for="{{dataArr.resultList}}">
+      <view class='check-res-item flex'>
+        <view class='section s-size'><text class='mgr b-size'>抽检时间：</text>{{item.createTime}}</view>
+        <view class='section {{item.passFlag ==1?"green":"red"}}'>
+          结果：{{item.passFlag == 1?"合格":"不合格"}}
+        </view> 
+      </view>
+    </block>
+
+  </view>
+</view>

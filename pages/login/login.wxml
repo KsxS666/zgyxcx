@@ -1,0 +1,13 @@
+<!--pages/login/login.wxml-->
+<view class='logo-box'>
+  <image src='../../images/ios/logo@2x.png'></image>
+</view>
+<text class='login-title bold'>爱家物联专管员登录</text>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='section'>
+    <view class='input-wrp'>
+      <input placeholder='请输入工号' name="worknum" class='worknum' type='number'/>
+    </view>
+  </view>
+  <button formType="submit" class='login-btn bac-color'  hover-class='hoverClass'  disabled='{{isLoading}}'>登录</button>
+</form>

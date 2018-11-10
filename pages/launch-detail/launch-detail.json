@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "投放详情",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#24c7ae",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

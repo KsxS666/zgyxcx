@@ -1,0 +1,33 @@
+<!--pages/kitchen-waste-insert/kitchen-waste-insert.wxml-->
+<view class='gr'></view>
+<view class='shadow-card house-tab flex'>
+  <!-- <view class='house-tab-item'>111</view>
+  <view class='house-tab-item'>111</view>
+  <view class='house-tab-item'>111</view> -->
+  
+  <block wx:for="{{ruleList}}">
+    <view class='house-tab-item {{index==tabActive?"active":""}}' bindtap='tabc' data-index="{{index}}">
+     <text>{{item.building + item.unit}}</text>
+    </view>
+  </block>
+  
+</view>
+<view class='community-info flex'>
+  <view><text class='community-name'>{{communityName}}</text>{{ruleList[tabActive].building + ruleList[tabActive].unit}}</view>
+  <view>{{ruleList[tabActive].count}}户</view>
+</view>
+<view class='card-wrapper'>
+  <block wx:for="{{checkArr}}">
+    <navigator wx:if="{{item.checkFlag!=0}}" class='flex {{"flag" + item.checkFlag}}' url='../score-insert/score-insert?houseId={{item.id}}&doorNumber={{item.doorNumber}}'>
+      <image src='../../images/ios/检查完成@2x.png' wx:if="{{item.checkFlag == 2}}"></image>
+      <image src='../../images/ios/检查错误@2x.png' wx:if="{{item.checkFlag == 3}}"></image>
+    <text>{{item.doorNumber}}</text>
+    </navigator>
+    <view wx:else class='flex {{"flag" + item.checkFlag}}'>
+      <image src='../../images/ios/检查完成@2x.png' wx:if="{{item.checkFlag == 2}}"></image>
+      <image src='../../images/ios/检查错误@2x.png' wx:if="{{item.checkFlag == 3}}"></image>
+      <text>{{item.doorNumber}}</text>
+    </view>       
+  </block>
+  
+</view>

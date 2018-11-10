@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "住户管理",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#24c7ae",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh":true
+}
