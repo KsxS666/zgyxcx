@@ -1,0 +1,34 @@
+<!--pages/personal-setting/personal-setting.wxml-->
+<view class='head-area flex'>
+  <view class='headImg-area'>
+    <!-- <image src='{{wxUserInfo.avatarUrl}}'></image>
+    <view>{{wxUserInfo.nickName}}</view> -->
+    <view class='userinfo-avatar'>
+      <open-data type="userAvatarUrl" style='width:180rpx;height:180rpx;border-radius:50%' ></open-data>
+    </view>
+      <open-data type="userNickName"></open-data>
+      
+  </view>
+</view>
+<view class='item flex s-size'>
+  <text>管理小区</text>
+  <text>{{userInfo.communityName}}</text>  
+</view>
+<view class='title-item flex s-size'>管辖范围</view>
+<!-- <view class='house-area'>
+  <view class='house-item item flex'><text class='mgr47 m-size'>1栋1单元</text><text>1001-1082户</text></view>
+  <view class='house-item item flex'>122</view>
+  <view class='house-item item flex'>33</view>  
+</view> -->
+<view class='house-area'>
+  <block wx:for="{{ruleList}}"  wx:for-index="iIndex" wx:for-item="i">
+    <view class='house-item item flex'>
+      <text class='mgr47 m-size'>{{i.building + i.unit}}</text>
+      <text>{{i.children[0].doorNumber}}</text>
+      <text wx:if="{{i.count>1}}">-{{i.children[i.count-1].doorNumber}}户</text>
+    </view>
+  </block>
+</view>
+<view class='btn-area ripple bac-color' bindtap='logOut'>
+  切换账户
+</view>

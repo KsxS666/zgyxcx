@@ -1,26 +1,25 @@
 <!--pages/house-manage/house-manage.wxml-->
 <view class='gr'></view>
 <view class='shadow-card commu-addr flex'>
-  <image src='../../images/ios/位置@2x.png' class='mgr'></image>
+  <image src='../../images/ios/address-icon.png' class='mgr'></image>
   <text>{{communityName}}</text>
 </view>
 <view class='filter-bar flex'>
   <view class='filter-bar-item flex'>
-    <picker bindtap="rotate1" range='{{buildingArr}}'  range-key='value' bindchange="buiSw" bindcancel="selCancel">
+    <picker bindtap="rotate1" range='{{buildingArr}}'  range-key='label' bindchange="buiSw" bindcancel="selCancel">
     {{buiName?buiName:"楼号"}}
     </picker>
-    <image src='../../images/ios/下拉箭头@2x.png' class='arrow {{isRotate1?"rotate1":""}}'></image>
+    <image src='../../images/ios/down-arrow.png' class='arrow {{isRotate1?"rotate1":""}}'></image>
   </view>
   <view class='filter-bar-item flex'>
     <picker bindtap="rotate2" range='{{unitArr}}' range-key='label' bindchange="unSw" bindcancel="selCancel">
     {{unName?unName:"单元"}}</picker>
-    <image src='../../images/ios/下拉箭头@2x.png' class='arrow {{isRotate2?"rotate2":""}}'></image>
+    <image src='../../images/ios/down-arrow.png' class='arrow {{isRotate2?"rotate2":""}}'></image>
   </view>
   <view class='filter-bar-item flex'>
     <picker bindtap="rotate3" range='{{doorArr}}' range-key='label' bindchange="dooSw" bindcancel="selCancel">
-    {{doorName?doorName:"门牌"}}
-    </picker>
-    <image src='../../images/ios/下拉箭头@2x.png' class='arrow {{isRotate3?"rotate3":""}}'></image>
+    {{doorName?doorName:"门牌"}}</picker>
+    <image src='../../images/ios/down-arrow.png' class='arrow {{isRotate3?"rotate3":""}}'></image>
   </view>
 </view>
 <block wx:for="{{dataArr}}">
@@ -41,11 +40,12 @@
       </view>
       <view class='section'>
         <view class='ripple'>
-        <navigator class='go-detail bac-color' hover-class='none' url='../launch-detail/launch-detail?houseId={{item.id}}&doorNumber={{item.doorNumber}}&address={{item.address}}&communityName={{item.communityName}}'>
+        <navigator class='go-detail bac-color' hover-class='hoverClass' url='../launch-detail/launch-detail?houseId={{item.id}}&doorNumber={{item.doorNumber}}&address={{item.address}}&communityName={{item.communityName}}'>
         投放详情 
         </navigator> 
         </view>
       </view>    
     </view>  
   </view>
+  <view class='' style='height:20rpx;background:#f5f5f5'></view>
 </block>

@@ -8,7 +8,9 @@ Page({
   data: {
     wxUserInfo:null,
     userInfo:null,
-    ruleList:null
+    ruleList:null,
+    bannerList:null,
+    isLogin:false
   },
 
   /**
@@ -21,8 +23,9 @@ Page({
       success: function(res) {
         that.setData({
           userInfo:res.data,
+          isLogin:true
         });
-        that.fetchData(res.data.id)
+        that.fetchData(res.data)
       },
     })
     wx.getSetting({
@@ -33,10 +36,9 @@ Page({
             success:((ress)=>{
               that.setData({
                 wxUserInfo: ress.userInfo,
-                success: (() => {
-                  app.globalData.wxUserInfo = e.detail.userInfo
-                })
               })
+              wx.setStorageSync('wxUser', ress.userInfo)
+              
             })
           })
         }
@@ -78,7 +80,56 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    wx.showLoading()
+    var that = this;
+    wx.request({
+      url: app.globalData.BASE_API + 'user/api/house/getListDataByOfficer',
+      data: { officerId: that.data.userInfo.id },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: ((res) => {
+        wx.hideLoading();
+        wx.stopPullDownRefresh()
+        if (res.data.code === 0) {
+          that.setData({
+            ruleList: res.data.data
+          })
+        }
 
+      }),
+      fail: (() => {
+        wx.showToast({
+          title: '服务器连接失败！',
+          icon: 'none',
+          duration: 2000
+        })
+      })
+    });
+    wx.request({
+      url: app.globalData.BASE_API + 'system/api/banner/getBannerPage',
+      data: { orgId: that.data.userInfo.orgId, locationCode: 4 },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: ((res) => {
+        wx.hideLoading()
+        console.log('轮播图数据', res);
+        that.setData({
+          bannerList: res.data
+        })
+
+      }),
+      fail: (() => {
+        wx.showToast({
+          title: '服务器连接失败！',
+          icon: 'none',
+          duration: 2000
+        })
+      })
+    })
   },
 
   /**
@@ -93,19 +144,19 @@ Page({
    */
   onShareAppMessage: function () {
   },
-  fetchData:function(id){
+  fetchData:function(data){
     wx.showLoading();
     var that = this;
     wx.request({
       url: app.globalData.BASE_API + 'user/api/house/getListDataByOfficer',
-      data: { officerId: id},
+      data: { officerId: data.id},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method: 'POST',
       success: ((res) => {
         wx.hideLoading()
-        console.log(666,res);
+        console.log(666,res.data.data);
         if(res.data.code === 0){
           that.setData({
             ruleList: res.data.data
@@ -120,6 +171,34 @@ Page({
           duration:2000
         })
       })
+    });
+    wx.request({
+      url: app.globalData.BASE_API + 'system/api/banner/getBannerPage',
+      data: { orgId: data.orgId,locationCode:4 },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: ((res) => {
+        wx.hideLoading()
+        console.log('轮播图数据', res);
+        that.setData({
+          bannerList:res.data
+        })
+
+      }),
+      fail: (() => {
+        wx.showToast({
+          title: '服务器连接失败！',
+          icon: 'none',
+          duration: 2000
+        })
+      })
+    })
+  },
+  goPersonalSetting:function(e){
+    wx.navigateTo({
+      url: '../personal-setting/personal-setting',
     })
   },
   getWxUserInfo:function(e){
@@ -129,6 +208,18 @@ Page({
         if (!res.authSetting['scope.userInfo']) {
           wx.authorize({
             scope: 'scope.userInfo',
+          })
+        }else{
+          wx.getUserInfo({
+            success: ((ress) => {
+              that.setData({
+                wxUserInfo: ress.userInfo,
+              })
+              wx.setStorage({
+                key: 'wxUser',
+                data: ress.userInfo,
+              })
+            })
           })
         }
       }

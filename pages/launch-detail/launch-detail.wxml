@@ -1,8 +1,11 @@
 <!--pages/launch-detail/launch-detail.wxml-->
 <view class='gr'></view>
 <view class='shadow-card location-info'>
-  <text class='location-content s-size'>{{params.doorNumber}}</text>
-  <text class='b-size'>{{params.communityName + "-"+params.address}}</text>
+  <view wx:if="{{params}}">
+    <text class='location-content s-size'>{{params.doorNumber}}</text>
+    <text class='b-size'>{{params.communityName + "-"+params.address}}</text>
+  </view>
+
 </view>
 <view class='info-content'>
   <view class='count-num-wrp flex'>

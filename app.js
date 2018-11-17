@@ -49,7 +49,7 @@ App({
     })
   },
   globalData: {
-    BASE_API:"http://172.16.21.132:10000/", 
+    BASE_API:"https://backend.ajhbw.cn/", 
     wxUserInfo:null,
     userInfo: null,
     isLogin:null,

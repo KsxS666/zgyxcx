@@ -5,11 +5,12 @@
   
   <view class='card-info card-info-1 flex'>
     <view class='b-size'>今日录入</view>
-    <view>录入{{dataArr.today.totalCount}}次</view>
+    <view >录入{{dataArr.today.totalCount?dataArr.today.totalCount:0}}次</view>
   </view>
   <view class='card-info card-info-2 flex'>
     <view>约{{dataArr.today.bucketCount}}桶</view>
-    <view>合格{{dataArr.today.passCount}}次</view>
+    <view wx:if="{{dataArr.today.passCount}}">合格{{dataArr.today.passCount}}次</view>
+    <view wx:else>0</view>
   </view>
 </view>
 <view class='history-title b-size'>历史录入</view>
@@ -24,7 +25,7 @@
     </view>
     <view class='card-info card-info-2 flex'>
       <view>约{{item.bucketCount}}桶</view>
-      <view>合格{{item.passCount}}次</view>
+      <view>合格{{item.passCount?item.passCount:0}}次</view>
     </view>
   </view>
 </block>

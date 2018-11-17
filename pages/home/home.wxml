@@ -1,64 +1,68 @@
-<view class="user-info flex">
-    <view class='head-name flex'>
-      <view wx:if="{{wxUserInfo==null}}">
-        <button  open-type="getUserInfo" bindgetuserinfo='getWxUserInfo' style='width:176rpx;font-size:28rpx;background-color:#fff;'>获取用户</button>
+<view wx:if="{{isLogin}}" class='all'>
+  <view class='gr'></view>
+    <view class='shadow-card commu-addr flex'>
+      <view class='head-name flex'>
+        <!-- <view wx:if="{{wxUserInfo==null}}">
+          <button  open-type="getUserInfo" bindgetuserinfo='getWxUserInfo' style='width:176rpx;font-size:28rpx;background-color:#fff;'>获取用户</button>
+        </view>
+        <view wx:else class='head-name flex'>
+          <image src="{{wxUserInfo.avatarUrl}}" class='headImg mgr' bindtap='goPersonalSetting'></image>
+          <text class='bolder'>{{wxUserInfo.nickName}}</text>
+        </view> -->
+        <view bindtap='goPersonalSetting' class="headImg userinfo-avatar">
+          <open-data type="userAvatarUrl" ></open-data>
+        </view>
+        <open-data type="userNickName"></open-data>
       </view>
-      <view wx:else class='head-name flex'>
-        <image src="{{wxUserInfo.avatarUrl}}" class='headImg mgr'></image>
-        <text class='bolder'>{{wxUserInfo.nickName}}</text>
-      </view>
+      <view class='community-name flex'>
+        <image src='../../images/ios/address-icon.png' class='mgr'></image>
+        <text class='bolder'>{{userInfo.communityName}}</text>
+      </view>  
     </view>
 
+  <swiper class='banner-swiper' indicator-dots circular autoplay interval="3000" duration="1000" indicator-active-color="#ffffff" indicator-color="e5e5e5">
+      <block wx:for="{{bannerList}}">
+        <swiper-item>
+          <image src='{{item.img}}'></image>
+        </swiper-item>
+      </block>
+  </swiper>
+  <view class='shadow-card house-swiper flex'>
+    <view class='manage-title'>管辖区域</view>
+    <swiper vertical autoplay interval="2000" circular>
+      <block wx:for="{{ruleList}}" wx:for-index="iIndex" wx:for-item="i">
+        <swiper-item>
+          <text class='mgr47 m-size'>{{i.building + i.unit}}</text>
+          <text>{{i.children[0].doorNumber}}</text>
+          <text wx:if="{{i.count>1}}">-{{i.children[i.count-1].doorNumber}}户</text>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='grid flex'>
+    <view class='grid-column-item flex'>
+      <navigator url='../house-manage/house-manage' class='grid-row-item flex card1'>
+        <view><image src='../../images/ios/house-manage.png'></image></view>
+        <view><text class='bolder'>住户管理</text></view>
+      </navigator>
+      <navigator url='../kitchen-waste-insert/kitchen-waste-insert' class='grid-row-item flex card2'>
+        <view><image src='../../images/ios/kitchen-insert.png'></image></view>
+        <view><text class='bolder'>厨余录入</text></view>
+      </navigator>
 
-  <view class='community-name flex'>
-    <image src='../../images/ios/位置@2x.png' class='mgr'></image>
-    <text class='bolder'>{{userInfo.communityName}}</text>
-  </view>  
-</view>
-<view class='head-title bac-color bolder'>管辖区域</view>
-<view class='area-manager-content flex'>
-  <block wx:for="{{ruleList}}" wx:for-index="iIndex" wx:for-item="i">
-    <block wx:for="{{i.children}}" wx:for-index="jIndex" wx:for-item="j">
-      <view class='area-manager-item bolder' >
-        <text>{{i.building + i.unit + i.children[0].doorNumber}}</text><text wx:if="{{i.count>1}}">-{{i.children[i.count-1].doorNumber}}</text>
-      </view>
-    </block>
-  </block>
-</view>
-<swiper indicator-dots autoplay interval="2000" duration="1000" indicator-active-color="#ffffff" indicator-color="e5e5e5">
-    <swiper-item>
-      <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' class="slide-image" width="355" height="75"/>
-    </swiper-item>
-    <swiper-item>
-      <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg' class="slide-image" width="355" height="75"/>
-    </swiper-item>
-    <swiper-item>
-      <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg' class="slide-image" width="355" height="75"/>
-    </swiper-item>
-</swiper>
-<view class='grid flex'>
-  <view class='grid-column-item flex'>
-    <navigator url='../house-manage/house-manage' hover-class='none' class='grid-row-item flex card1 ripple'>
-      <view><image src='../../images/ios/住户管理@2x.png'></image></view>
-      <view><text class='bolder'>住户管理</text></view>
-    </navigator>
-    <navigator url='../kitchen-waste-insert/kitchen-waste-insert' hover-class='none' class='grid-row-item flex card2 ripple'>
-      <view><image src='../../images/ios/厨余录入@2x.png'></image></view>
-      <view><text class='bolder'>厨余录入</text></view>
-    </navigator>
+      
+    </view>
+    <view class='grid-column-item flex'>
+      <navigator url='../insert-record/insert-record' class='grid-row-item flex card3'>
+        <view><image src='../../images/ios/insert-record.png'></image></view>
+        <view><text class='bolder'>录入记录</text></view>
+      </navigator>
+      <navigator url='../work-option/work-option' class='grid-row-item flex card4'>
+        <view><image src='../../images/ios/work-option.png'></image></view>
+        <view><text class='bolder'>工作事项</text></view>
+      </navigator>
 
+    </view>
     
   </view>
-  <view class='grid-column-item flex'>
-    <navigator url='../insert-record/insert-record' hover-class='none' class='grid-row-item flex card3 ripple'>
-      <view><image src='../../images/ios/录入记录@2x.png'></image></view>
-      <view><text class='bolder'>录入记录</text></view>
-    </navigator>
-    <navigator url='../phonebook/phonebook' hover-class='none' class='grid-row-item flex card4 ripple'>
-      <view><image src='../../images/ios/成员通讯录@2x.png'></image></view>
-      <view><text class='bolder'>成员通讯录</text></view>
-    </navigator>
-
-  </view>
-  
 </view>

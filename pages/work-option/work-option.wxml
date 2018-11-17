@@ -1,0 +1,33 @@
+<!--pages/work-option/work-option.wxml-->
+<web-view src="https://device.ajhbw.cn/workOption/workOption.html" bindload="webOk" bindmessage="webMessage"></web-view>
+<!-- <view class='web-wrp'>
+  <view class='card-wrp'>
+    <view class='best-title'>
+      <text class='mgr47'>易腐垃圾收运流程</text>
+      <text>收运员</text>    
+    </view>
+    <view class='better-title'>
+      一、工作前准备
+    </view>
+    <view class='content'>
+      ①分类准确的直接倒入转运垃圾桶。②分类不准确的，将杂物挑出后倒入转运垃圾桶。
+  ③挑出的杂物与割开的袋子放入备好的垃圾袋。
+
+    </view>
+  </view>
+  <view class='card-wrp'>
+    <view class='best-title'>
+      <text class='mgr47'>易腐垃圾收运流程</text>
+      <text>收运员</text>    
+    </view>
+    <view class='better-title'>
+      一、工作前准备
+    </view>
+    <view class='content'>
+      ①分类准确的直接倒入转运垃圾桶。②分类不准确的，将杂物挑出后倒入转运垃圾桶。
+  ③挑出的杂物与割开的袋子放入备好的垃圾袋。
+
+    </view>
+  </view>
+
+</view> -->

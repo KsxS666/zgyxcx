@@ -17,6 +17,7 @@ Page({
     wx.getStorage({
       key: 'user',
       success: function(res) {
+        wx.showLoading();
         wx.request({
           url: app.globalData.BASE_API + 'user/api/foodWaste/getPage',
           data: { officerId: res.data.id },
@@ -25,6 +26,7 @@ Page({
           },
           method: 'POST',
           success: ((res) => {
+            wx.hideLoading()
             that.setData({
               dataArr:res.data.data
             })
@@ -73,7 +75,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onLoad();
+    wx.stopPullDownRefresh()
   },
 
   /**

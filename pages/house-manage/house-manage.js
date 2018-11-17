@@ -19,6 +19,7 @@ Page({
     isRotate1:false,
     isRotate2:false,
     isRotate2:false,
+    reSetQuery:{},
     listQuery:{}
   },
 
@@ -35,7 +36,8 @@ Page({
         that.fetchData(res.data.id);
         that.setData({
           communityName: res.data.communityName,
-          officerId: res.data.id
+          officerId: res.data.id,
+          resetQuery:{officerId:res.data.id}
         })
       },
     })
@@ -73,6 +75,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    wx.showLoading()
     var that = this;
     let id = that.data.officerId;
     wx.request({
@@ -83,6 +86,7 @@ Page({
       },
       method: 'POST',
       success: ((res) => {
+        wx.hideLoading()
         that.setData({
           dataArr: res.data.data.resultList,
         },(()=>{
@@ -119,7 +123,6 @@ Page({
   },
   fetchFilter:function(id){
     var that = this;
-    wx.showLoading();
     wx.request({
       url: app.globalData.BASE_API + 'user/api/house/getDataByOfficer',
       data: { officerId: id },
@@ -128,17 +131,15 @@ Page({
       },
       method: 'POST',
       success: ((res) => {
-        wx.hideLoading();
         let arr = res.data.data;
         that.setData({
           filterArr:arr
         })
         let arr1 = [];
         for(let item of arr){
-          let obj = {index:item.index,value:item.value};
+          let obj = {index:item.index,label:item.label};
           arr1.push(obj)
         };
-        console.log(arr1)
         that.setData({
           buildingArr:arr1
         })
@@ -185,12 +186,19 @@ Page({
   },
   buiSw:function(e){
     var that = this;
+    that.setData({
+      unitArr:null,
+      doorArr:null,
+      unName:null,
+      doorName:null
+    })
     //获取列表（一级筛选）
     wx.showLoading();
     let listQuery = that.data.listQuery;
     let arr = that.data.filterArr;
     listQuery.building = arr[e.detail.value].label;
-    console.log('listQuery', listQuery);
+    listQuery.unit = '';
+    listQuery.doorNumber = '';
     wx.request({
       url: app.globalData.BASE_API + 'user/api/house/getListData',
       data: listQuery,
@@ -200,6 +208,7 @@ Page({
       method: 'POST',
       success: ((res) => {
         that.setData({
+          listQuery:listQuery,
           dataArr: res.data.data.resultList
         },(()=>{
           wx.hideLoading()
@@ -228,11 +237,17 @@ Page({
   },
   unSw:function(e){
     var that = this;
+    that.setData({
+      doorArr:null,
+      doorName:null
+    })
     //获取列表（二级筛选）
     wx.showLoading();
     let listQuery = that.data.listQuery;
     let arr2 = that.data.unitArr;
-    listQuery.unit = arr2[e.detail.value].label
+    listQuery.unit = arr2[e.detail.value].label;
+    listQuery.doorNumber = '';
+    
     wx.request({
       url: app.globalData.BASE_API + 'user/api/house/getListData',
       data: listQuery,
@@ -273,6 +288,7 @@ Page({
     var that = this;
     wx.showLoading();
     let listQuery = that.data.listQuery;
+    
     let arr2 = that.data.doorArr;
     listQuery.doorNumber = arr2[e.detail.value].label;
     wx.request({

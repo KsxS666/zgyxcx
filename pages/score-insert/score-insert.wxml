@@ -2,11 +2,11 @@
 <view class='door-num mgb'>{{params.doorNumber}}</view>
 <view class='score-options'>
   <view class='yeah mgb' bindtap='yeahCheck'>
-    <image src='{{yeahCheck?"../../images/ios/合格选择@2x.png":"../../images/ios/合格@2x.png"}}'></image>
+    <image src='{{yeahCheck||params.checkFlag == 2?"../../images/ios/grade-selected.png":"../../images/ios/grade.png"}}'></image>
     <view>合格</view>
   </view>
   <navigator class='nop' bindtap='nopCheck' url='../camera-obtain/camera-obtain?houseId={{params.houseId}}'  hover-class="none">
-    <image src='{{nopCheck?"../../images/ios/不合格选择@2x.png":"../../images/ios/不合格@2x.png"}}'></image>
+    <image src='{{params.checkFlag == 3?"../../images/ios/off-grade-selected.png":"../../images/ios/off-grade.png"}}'></image>
     <view>不合格</view>
   </navigator>  
 </view>

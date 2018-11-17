@@ -1,0 +1,23 @@
+/* pages/work-option/work-option.wxss */
+.web-wrp{
+  padding: 30rpx 30rpx;
+  font-size: 32rpx;
+  line-height: 66rpx;
+}
+.best-title{
+  color: red;
+  font-size: 40rpx;
+  text-align: center;
+  
+}
+.mgr47{
+  margin-right:47rpx
+}
+.better-title{
+  font-weight: bolder;
+  color: #000000;
+  font-size: 36rpx;
+}
+.card-wrp{
+  margin-bottom: 200rpx;
+}

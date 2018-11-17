@@ -2,31 +2,11 @@
 @import "../../common/common.wxss";
 page{
   background: #ffffff;
-}
-.house-tab .house-tab-item{
-  flex:1;
-  text-align: center;
-  font-size: 24rpx;
-  color: #999999;
-  line-height: 96rpx;
-  position: relative;
   font-weight: bold
 }
-.house-tab .house-tab-item text{
-  transition: .5s
-}
-.house-tab .house-tab-item:not(:last-child):after{
-  content: "|";
-  color: #e5e5e5;
-  position: absolute;
-  right: 0
-}
-.house-tab .house-tab-item.active text{
-  font-weight: bolder;
-  color: #24c7ae;
-  transition: .5s;
-  position: relative;
-  top: -3rpx;
+.house-tab{
+  align-items: center;
+  padding: 0 30rpx;
 }
 .community-info{
   padding: 0 30rpx;
@@ -40,13 +20,17 @@ page{
 .community-name{
   margin-right: 20rpx;
 }
+.down-arrow{
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
 .card-wrapper{
   margin-top: 30rpx;
   overflow: hidden;
 }
 .card-wrapper navigator,.card-wrapper view{
-  margin-left: 30rpx;
-  margin-bottom: 30rpx;
+  margin-left: 25rpx;
+  margin-bottom: 25rpx;
   float: left;
   width:210rpx;
   height: 210rpx;
@@ -55,7 +39,7 @@ page{
   font-size: 40rpx;
   font-weight: bolder;
   position: relative;
-  border-radius: 10rpx
+  border-radius: 10rpx;
 }
 .card-wrapper navigator image,.card-wrapper view image{
   position: absolute;
@@ -69,16 +53,23 @@ page{
 }
 .flag0{
   background: #f5f5f5;
-  color: #a6a6a6
+  color: #a6a6a6;
+  padding: 2px;  
+  /* border: 2px solid rgba(229,82,53, 0) */
+  
 }
 .flag1{
   background: #f5f5f5;
   color: #8f8f8f;
   border: 2px solid #a6a6a6
 }
-.flag2{
-  color: #00ac92
+.card-wrapper navigator.flag2{
+  color: #00ac92;
+  /* border: 2px solid rgba(0,172,146, 0) */
+  padding: 2px
 }
-.flag3{
-  color: #e55235
+.card-wrapper navigator.flag3{
+  color: #e55235;
+  /* border: 2px solid rgba(229,82,53, 0) */
+  padding: 2px
 }

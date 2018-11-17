@@ -1,16 +1,14 @@
-// pages/kitchen-waste-insert/kitchen-waste-insert.js
-const app = getApp();
+// pages/personal-setting/personal-setting.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    ruleList:null,
-    selectedName:'',
-    communityName:'',
-    checkArr:null,
-    tapIndex:0
+    wxUserInfo:null,
+    userInfo:null,
+    ruleList:null
   },
 
   /**
@@ -19,10 +17,18 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.getStorage({
-      key: 'user',
-      success: function (res) {
+      key: 'wxUser',
+      success: function(res) {
         that.setData({
-          communityName: res.data.communityName
+          wxUserInfo:res.data
+        })
+      },
+    });
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        that.setData({
+          userInfo:res.data
         })
         that.fetchData(res.data.id)
       },
@@ -40,11 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.onLoad();
-    var that = this;
-    that.setData({
-      tabActive:0
-    })
+
   },
 
   /**
@@ -81,7 +83,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  fetchData: function (id) {
+  fetchData:function(id){
     wx.showLoading();
     var that = this;
     wx.request({
@@ -96,9 +98,7 @@ Page({
         console.log(666, res);
         if (res.data.code === 0) {
           that.setData({
-            ruleList: res.data.data,
-            selectedName: res.data.data[that.data.tapIndex].building + res.data.data[that.data.tapIndex].unit,
-            checkArr: res.data.data[that.data.tapIndex].children            
+            ruleList: res.data.data
           })
         }
 
@@ -112,31 +112,10 @@ Page({
       })
     })
   },
-  showSheet:function(e){
-    var that = this;
-    let ruleList = that.data.ruleList
-    let sheetArr = [];
-    for (let item of ruleList){
-      let str = item.building + item.unit;
-      sheetArr.push(str)
-    }
-    wx.showActionSheet({
-      
-      itemList: sheetArr,
-      success(res){
-        console.log(res.tapIndex);
-
-        that.setData({
-          selectedName:sheetArr[res.tapIndex],
-          checkArr:ruleList[res.tapIndex].children,
-          tapIndex: res.tapIndex,
-          success:(()=>{
-
-          })
-        })
-        
-        
-      }
+  logOut:function(e){
+    wx.clearStorageSync();
+    wx.reLaunch({
+      url: '../login/login',
     })
   }
 })

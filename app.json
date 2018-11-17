@@ -6,9 +6,11 @@
     "pages/insert-record/insert-record",    
     "pages/launch-detail/launch-detail",    
     "pages/phonebook/phonebook",
+    "pages/work-option/work-option",    
     "pages/kitchen-waste-insert/kitchen-waste-insert",  
     "pages/score-insert/score-insert",
-    "pages/camera-obtain/camera-obtain",    
+    "pages/camera-obtain/camera-obtain",
+    "pages/personal-setting/personal-setting",    
     "pages/index/index",
     "pages/logs/logs"
   ],

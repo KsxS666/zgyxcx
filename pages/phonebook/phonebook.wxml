@@ -2,7 +2,7 @@
 <view class='gr'></view>
 <view class='shadow-card my-info'>
   <view class='my-head-name flex'>
-    <image src='../../images/ios/我的通讯@2x.png'></image>
+    <image src='../../images/ios/my.png'></image>
     我
   </view>
   <view class='my-phone flex'>{{myPhone}}</view>  
@@ -17,7 +17,7 @@
       <view class='section flex ripple' wx:if="{{item.phone!=myPhone}}" bindtap='callNumber' data-phone="{{item.phone}}">
         <view>{{item.phone}}</view>
         <view class='phone-call flex'>
-          <image src='../../images/ios/呼叫@2x.png' class='phone-icon mgr'></image>呼叫
+          <image src='../../images/ios/phone-icon.png' class='phone-icon mgr'></image>呼叫
         </view>
       </view> 
     </view>

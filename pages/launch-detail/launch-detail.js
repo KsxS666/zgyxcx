@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     var that = this;
     that.setData({
       params:options
@@ -72,7 +73,28 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var that = this;
+    wx.request({
+      url: app.globalData.BASE_API + 'user/api/foodWaste/getPage',
+      data: { houseId: that.data.params.houseId },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method: 'POST',
+      success: ((res) => {
+        that.setData({
+          dataArr: res.data.data
+        })
+        wx.stopPullDownRefresh()
+      }),
+      fail: (() => {
+        wx.showToast({
+          title: '服务器连接失败！',
+          icon: 'none',
+          duration: 2000
+        })
+      })
+    })
   },
 
   /**
